@@ -1,0 +1,36 @@
+
+services:
+  postgres:
+    image: postgres:16
+    container_name: ledger-postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: event_source_ledger
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7-alpine
+    container_name: ledger-redis
+
+    ports:
+      - "6379:6379"
+
+  app:
+    build: .
+    container_name: ledger-api
+    ports:
+      - "8000:8000"
+
+    env_file:
+      - .env
+
+    depends_on:
+      - postgres
+      - redis
+
+volumes:
+  postgres_data:
