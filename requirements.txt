@@ -6,7 +6,7 @@ psycopg[binary]
 redis
 
 python-dotenv
-
+pydantic_settings
 pytest
 
 httpx

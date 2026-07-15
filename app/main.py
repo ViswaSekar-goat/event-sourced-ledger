@@ -1,10 +1,26 @@
 from fastapi import FastAPI
 
-app = FastAPI(title="Event Sourced Ledger")
+from app.db.connection import get_connection
+
+app = FastAPI()
 
 
 @app.get("/")
-def root():
-    return {
-        "message": "Ledger API is running"
-    }
+def main():
+
+    msg = "ledger api running"
+    return msg
+
+
+@app.get("/db-test")
+def db_test():
+
+    with get_connection() as conn:
+
+        with conn.cursor() as cur:
+
+            cur.execute("SELECT 1")
+
+            result = cur.fetchone()
+
+    return result
