@@ -1,12 +1,12 @@
 fastapi
 uvicorn[standard]
-
+abc
 psycopg[binary]
-
+pathlib
 redis
-
+datetime
 python-dotenv
 pydantic_settings
 pytest
-
+uuid
 httpx
