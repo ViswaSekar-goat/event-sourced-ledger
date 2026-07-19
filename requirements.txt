@@ -1,6 +1,5 @@
 fastapi
 uvicorn[standard]
-abc
 psycopg[binary]
 pathlib
 redis

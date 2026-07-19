@@ -3,7 +3,7 @@ from app.db.connection import get_connection
 
 def initialize_database():
 
-    schema_path = Path(__file__).parent / "schema.sql"
+    schema_path = Path(__file__).parent / "schemas" / "schema.sql"
 
     schema_sql = schema_path.read_text()
 
